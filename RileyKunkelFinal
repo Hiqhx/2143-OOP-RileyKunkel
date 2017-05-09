@@ -1,0 +1,196 @@
+##Question1###########################################################
+def dirReduc(k=[]):
+    NS = 0
+    EW = 0
+    for m in range(len(k)):
+      if k[m] == "NORTH":
+        NS += 1
+      elif k[m] == "SOUTH":
+        NS -= 1
+      elif k[m] == "EAST":
+        EW += 1
+      elif k[m] == "WEST":
+        EW -= 1
+        
+    k.clear()
+    if NS >= 1:
+      k.append("NORTH")
+    elif NS <= -1:
+      k.append("SOUTH")
+      
+    if EW >= 1:
+      k.append("EAST")
+    elif EW <= -1:
+      k.append("WEST")
+      
+    print(k)
+    
+
+dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
+dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH"])
+
+######################################################################
+##Question2###########################################################
+def tickets(k=0):
+    if k[0] > 25:
+      print("No")
+    elif len(k) == 1 and k[0] == 25:
+      print("Yes")
+    elif k[-1] - 25 > sum(k[0:len(k)-2]):
+      print("No")
+    elif k[-1] - 25 <= sum(k[0:len(k)-2]):
+      print("Yes")
+
+
+tickets([25,25,50])
+tickets([25,100])
+
+######################################################################
+##Question3###########################################################
+class Point:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "[%d,%d]" % (self.x, self.y) 
+
+class Shape(object):
+    def __init(self,p1,p2):
+        self.p1 = p1
+        self.p2 = p2
+    
+    def area(self):
+        pass
+
+    def perimeter(self):
+        pass
+      
+class Rectangle(object):
+    def __init(self, width=1, height=1):
+        Shape.__init__(self, "rectangle")
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * self.height + 2 * self.width
+      
+class Square(object):
+    def __init(self, width):
+        Shape.__init__(self, "square")
+        self.width = width
+    
+    def area(self):
+        return 2 * self.width
+
+    def perimeter(self):
+        return 4 * self.width
+      
+      
+class Cube(object):
+    def __init(self, width):
+        Square.__init__(self, "cube")
+        self.width = width
+    
+    def surfacearea(self):
+        return Square.area * 6
+
+######################################################################
+##Question4###########################################################
+def dupLet(k=[]):
+    l=[]
+    for i in range(len(k)):
+      if k.count(k[i]) > 1 and l.count(k[i]) == 0:
+        l.append(k[i])
+        
+    print(len(l))
+    print(l)
+    
+    
+dupLet(list("abcde"))
+dupLet(list("aabbcde"))
+dupLet(list("aabbcdeB"))
+dupLet(list("indivisibility"))
+dupLet(list("Indivisibilities"))
+dupLet(list("aa11"))
+
+######################################################################
+##Question5###########################################################
+def consec(k=[]):
+    for i in range(len(k)):
+      if i==0:
+        pass
+      elif k[i-1] + 1 != k[i]:
+        print("First non-consecutive number is:")
+        print(k[i])
+        break
+      
+      
+consec([1,2,3,4,6,7,8])
+
+######################################################################
+##Question6###########################################################
+class Person(object):
+
+    def __init__(self, firstname, lastname):
+        self.firstname = firstname
+        self.lastname = lastname
+
+    def get_name(self):
+        return '%s %s' % (self.firstname, self.lastname)
+  
+class Parent(object):
+
+    def __init__(self, person):
+        self.parent = person
+        self.children = []
+
+    def addchild(self, person3):
+        self.children.append(person3)
+        
+class Child(object):
+
+    def __init__(self, person1, person2):
+        self.child = person1
+        self.parent = person2
+
+######################################################################
+##Question7###########################################################
+import random
+class RoulettWheel(object):
+    def __init__(self):
+        self.wheel = [('G',0), ('R',1), ('B',2), ('R',3), ('B',4), ('R',5), ('B',6), ('R',7), ('B',8), ('R',9), ('B',10), ('B',11), ('R',12), ('B',13), ('R',14), ('B',15), ('R',16), ('B',17), ('R',18), ('R',19), ('B',20), ('R',21), ('B',22), ('R',23), ('B',24), ('R',25), ('B',26), ('R',27), ('B',28), ('B',29), ('R',30), ('B',31), ('R',32), ('B',33), ('R',34), ('B',35), ('R',36), ('G',00)]
+        
+    def spin(self):
+        return self.wheel[random.randint(0,37)]
+      
+class RoulettTable(object):
+    def __init__(self):
+        self.bet = ["0","00","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","Red","Black","1st Column","2nd Column","3rd Column","1st Dozen","2nd Dozen","3rd Dozen"]
+    def payouts(self):
+        pass
+      
+         
+class Player(object):
+    def __init__(self, name = None, total_bank = 0):
+        self.name = name
+        self.total_bank = total_bank
+        self.current_bet_amount = None
+        self.current_bet = None
+        
+    def setbet(self, bets = None, amount = 0):
+        pass
+        
+         
+class Game(object):
+    def __init__(self):
+        self.Players = []
+        self.gameround = 0
+        
+    def MainGameLoop(self):
+        pass ## Will have instance of all other classes
+        
+######################################################################
